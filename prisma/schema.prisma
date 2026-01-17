@@ -1,0 +1,199 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model with authentication and profile info
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String
+
+  // Profile measurements
+  heightCm      Int?
+  weightKg      Int?
+  bodyType      String?   // "slim", "athletic", "average", "curvy", "plus"
+
+  // Stats
+  helpfulVotes  Int       @default(0)
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  reviews       Review[]
+  upvotes       ReviewUpvote[]
+  following     Follow[]  @relation("UserFollowing")
+  followers     Follow[]  @relation("UserFollowers")
+
+  @@map("users")
+}
+
+// NextAuth models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// Product model
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  brand       String
+  category    String   // "tops", "bottoms", "dresses", "outerwear", "shoes", "accessories"
+  priceRange  String   // "$", "$$", "$$$", "$$$$"
+  description String?  @db.Text
+  images      String[] // Array of image URLs
+
+  // Aggregated stats
+  avgRating       Float    @default(0)
+  avgFitRating    Float    @default(0)
+  avgComfort      Float    @default(0)
+  avgValue        Float    @default(0)
+  avgDurability   Float    @default(0)
+  totalReviews    Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  reviews         Review[]
+  retailerLinks   RetailerLink[]
+
+  @@map("products")
+}
+
+// Review model
+model Review {
+  id            String   @id @default(cuid())
+  userId        String
+  productId     String
+
+  // Ratings (1-5)
+  rating        Int      // Overall rating
+  fitRating     Int      // How accurate the fit is
+  comfort       Int      // Comfort level
+  value         Int      // Value for money
+  durability    Int      // How long it lasts
+
+  // Written content
+  title         String?
+  content       String   @db.Text
+
+  // Fit information
+  sizePurchased String   // "XS", "S", "M", "L", "XL", "XXL", etc.
+  usualSize     String   // Their usual size
+  fitDescription String  // "runs_small", "true_to_size", "runs_large"
+
+  // User measurements at time of review
+  heightCm      Int?
+  weightKg      Int?
+  bodyType      String?
+
+  // Photos
+  photos        String[] // Array of image URLs
+
+  // Stats
+  helpfulCount  Int      @default(0)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  upvotes       ReviewUpvote[]
+
+  @@map("reviews")
+}
+
+// Review upvote model (for "helpful" votes)
+model ReviewUpvote {
+  id        String   @id @default(cuid())
+  userId    String
+  reviewId  String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, reviewId])
+  @@map("review_upvotes")
+}
+
+// Retailer link model (for "where to buy")
+model RetailerLink {
+  id            String   @id @default(cuid())
+  productId     String
+  retailerName  String   // "Amazon", "Nordstrom", "Zappos", etc.
+  url           String
+  price         Float?
+  affiliateCode String?  // For future affiliate tracking
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("retailer_links")
+}
+
+// Follow model (user following system)
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower    User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
