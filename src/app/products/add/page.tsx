@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function AddProductPage() {
   const router = useRouter();
@@ -19,7 +20,11 @@ export default function AddProductPage() {
   });
 
   if (status === "loading") {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center">
+        <div className="spinner-large"></div>
+      </div>
+    );
   }
 
   if (!session) {
@@ -59,130 +64,307 @@ export default function AddProductPage() {
     }
   };
 
+  const categories = [
+    { value: "tops", label: "Tops", icon: "👕" },
+    { value: "bottoms", label: "Bottoms", icon: "👖" },
+    { value: "dresses", label: "Dresses", icon: "👗" },
+    { value: "outerwear", label: "Outerwear", icon: "🧥" },
+    { value: "shoes", label: "Shoes", icon: "👟" },
+    { value: "accessories", label: "Accessories", icon: "👜" },
+  ];
+
+  const priceRanges = [
+    { value: "$", label: "Under $50", description: "Budget-friendly" },
+    { value: "$$", label: "$50-$100", description: "Moderate" },
+    { value: "$$$", label: "$100-$200", description: "Premium" },
+    { value: "$$$$", label: "$200+", description: "Luxury" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Add New Product</h1>
+    <div className="min-h-screen bg-[#f5f5f5] py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb */}
+        <div className="mb-6 flex items-center gap-2 text-sm animate-fade-in">
+          <Link href="/" className="text-[#666666] hover:text-[#d32323] transition-colors">
+            Home
+          </Link>
+          <span className="text-[#cccccc]">/</span>
+          <Link href="/products" className="text-[#666666] hover:text-[#d32323] transition-colors">
+            Products
+          </Link>
+          <span className="text-[#cccccc]">/</span>
+          <span className="text-[#2b2b2b] font-medium">Add Product</span>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8 animate-scale-in">
+          <div className="flex items-center gap-2 mb-2">
+            <svg
+              className="w-8 h-8 text-[#d32323]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            <h1 className="text-4xl font-bold text-[#2b2b2b]">Add New Product</h1>
+          </div>
+          <p className="text-[#666666] ml-10">
+            Share a product with the community to start collecting reviews
+          </p>
+        </div>
 
         {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-4">
-            <p className="text-sm text-red-800">{error}</p>
+          <div className="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 animate-scale-in">
+            <div className="flex items-start">
+              <svg
+                className="w-5 h-5 text-red-600 mt-0.5 mr-3 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <p className="text-sm text-red-800">{error}</p>
+            </div>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6 space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Product Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
+        <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+          {/* Basic Information */}
+          <div className="card p-8">
+            <div className="flex items-center gap-2 mb-6">
+              <svg
+                className="w-6 h-6 text-[#d32323]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-[#2b2b2b]">Product Information</h2>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
+                  Product Name <span className="text-[#d32323]">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="input"
+                  placeholder="e.g., Classic Fit Cotton T-Shirt"
+                />
+                <p className="mt-1 text-xs text-[#666666]">
+                  Include key details like fit, material, or style
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
+                  Brand <span className="text-[#d32323]">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.brand}
+                  onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                  className="input"
+                  placeholder="e.g., Nike, Zara, H&M"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
+                  Description <span className="text-[#666666] font-normal">(Optional)</span>
+                </label>
+                <textarea
+                  rows={4}
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  className="input"
+                  placeholder="Describe the product's features, materials, or what makes it special..."
+                />
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="brand" className="block text-sm font-medium text-gray-700">
-              Brand *
-            </label>
-            <input
-              type="text"
-              id="brand"
-              required
-              value={formData.brand}
-              onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
+          {/* Category Selection */}
+          <div className="card p-8">
+            <div className="flex items-center gap-2 mb-6">
+              <svg
+                className="w-6 h-6 text-[#d32323]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-[#2b2b2b]">Category</h2>
+              <span className="text-[#d32323] text-lg">*</span>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  onClick={() => setFormData({ ...formData, category: cat.value })}
+                  className={`p-4 rounded-lg border-2 transition-all text-center ${
+                    formData.category === cat.value
+                      ? "border-[#d32323] bg-[#fef3f2]"
+                      : "border-[#e6e6e6] hover:border-[#cccccc]"
+                  }`}
+                >
+                  <div className="text-4xl mb-2">{cat.icon}</div>
+                  <div className="font-bold text-[#2b2b2b]">{cat.label}</div>
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-              Category *
-            </label>
-            <select
-              id="category"
-              required
-              value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="">Select a category</option>
-              <option value="tops">Tops</option>
-              <option value="bottoms">Bottoms</option>
-              <option value="dresses">Dresses</option>
-              <option value="outerwear">Outerwear</option>
-              <option value="shoes">Shoes</option>
-              <option value="accessories">Accessories</option>
-            </select>
+          {/* Price Range Selection */}
+          <div className="card p-8">
+            <div className="flex items-center gap-2 mb-6">
+              <svg
+                className="w-6 h-6 text-[#d32323]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-[#2b2b2b]">Price Range</h2>
+              <span className="text-[#d32323] text-lg">*</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {priceRanges.map((range) => (
+                <button
+                  key={range.value}
+                  type="button"
+                  onClick={() => setFormData({ ...formData, priceRange: range.value })}
+                  className={`p-5 rounded-lg border-2 transition-all text-left ${
+                    formData.priceRange === range.value
+                      ? "border-[#00a562] bg-green-50"
+                      : "border-[#e6e6e6] hover:border-[#cccccc]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl font-bold text-[#00a562]">{range.value}</span>
+                    <span className="text-xs font-semibold text-[#666666] uppercase tracking-wider">
+                      {range.description}
+                    </span>
+                  </div>
+                  <div className="font-bold text-[#2b2b2b]">{range.label}</div>
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="priceRange" className="block text-sm font-medium text-gray-700">
-              Price Range *
-            </label>
-            <select
-              id="priceRange"
-              required
-              value={formData.priceRange}
-              onChange={(e) => setFormData({ ...formData, priceRange: e.target.value })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="">Select price range</option>
-              <option value="$">$ (Under $50)</option>
-              <option value="$$">$$ ($50-$100)</option>
-              <option value="$$$">$$$ ($100-$200)</option>
-              <option value="$$$$">$$$$ ($200+)</option>
-            </select>
+          {/* Image */}
+          <div className="card p-8">
+            <div className="flex items-center gap-2 mb-6">
+              <svg
+                className="w-6 h-6 text-[#d32323]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-[#2b2b2b]">Product Image</h2>
+              <span className="text-sm font-medium text-[#666666]">(Optional)</span>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[#666666] mb-2">
+                Image URL
+              </label>
+              <input
+                type="url"
+                value={formData.imageUrl}
+                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                placeholder="https://example.com/product-image.jpg"
+                className="input"
+              />
+              <div className="mt-4 p-4 bg-[#f9f9f9] rounded-lg">
+                <p className="text-sm text-[#666666]">
+                  💡 <strong>Tip:</strong> Upload your image to an image hosting service like Imgur,
+                  then paste the URL here. High-quality images help attract more reviews!
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-              Description
-            </label>
-            <textarea
-              id="description"
-              rows={4}
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700">
-              Image URL
-            </label>
-            <input
-              type="url"
-              id="imageUrl"
-              value={formData.imageUrl}
-              onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-              placeholder="https://example.com/image.jpg"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-            <p className="mt-1 text-sm text-gray-500">
-              Enter a direct link to an image (optional)
-            </p>
-          </div>
-
-          <div className="flex justify-end space-x-4">
+          {/* Submit Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-end">
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="btn-secondary px-8 py-3 text-base"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+              className="btn-primary px-8 py-3 text-base flex items-center justify-center gap-2"
             >
-              {loading ? "Creating..." : "Create Product"}
+              {loading ? (
+                <>
+                  <div className="spinner"></div>
+                  Creating Product...
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  Create Product
+                </>
+              )}
             </button>
           </div>
         </form>
