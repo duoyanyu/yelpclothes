@@ -2,26 +2,211 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Yelp-inspired Design System */
 :root {
+  --primary: #d32323;
+  --primary-dark: #af1c1c;
+  --primary-light: #ff2d2d;
+  --secondary: #0073bb;
   --background: #ffffff;
-  --foreground: #171717;
+  --surface: #f5f5f5;
+  --border: #e6e6e6;
+  --text-primary: #2b2b2b;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --star: #ffa500;
+  --success: #00a562;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-md: rgba(0, 0, 0, 0.12);
+  --shadow-lg: rgba(0, 0, 0, 0.16);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background: var(--surface);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+@layer components {
+  /* Button styles */
+  .btn-primary {
+    @apply bg-[#d32323] hover:bg-[#af1c1c] text-white font-bold py-2.5 px-6 rounded-md transition-all duration-200 shadow-sm hover:shadow-md active:transform active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-[#2b2b2b] font-bold py-2.5 px-6 rounded-md border-2 border-[#e6e6e6] transition-all duration-200 hover:border-[#d32323] hover:text-[#d32323] active:transform active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 text-[#666666] hover:text-[#d32323] font-semibold py-2 px-4 rounded-md transition-all duration-200;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg border border-[#e6e6e6] shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:border-[#d32323] hover:-translate-y-1 cursor-pointer;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-2.5 border border-[#e6e6e6] rounded-md focus:outline-none focus:border-[#0073bb] focus:ring-2 focus:ring-[#0073bb]/20 transition-all duration-200;
+  }
+
+  /* Star rating */
+  .star-rating {
+    @apply flex items-center gap-0.5;
+  }
+
+  .star {
+    @apply text-[#ffa500];
+  }
+
+  .star-empty {
+    @apply text-[#e6e6e6];
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply badge bg-[#d32323] text-white;
+  }
+
+  .badge-success {
+    @apply badge bg-[#00a562] text-white;
+  }
+
+  .badge-secondary {
+    @apply badge bg-[#f5f5f5] text-[#666666] border border-[#e6e6e6];
+  }
+
+  /* Price range */
+  .price-range {
+    @apply text-[#666666] font-semibold;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-2xl font-bold text-[#2b2b2b] mb-4;
+  }
+
+  /* Link styles */
+  .link {
+    @apply text-[#0073bb] hover:text-[#005a94] underline cursor-pointer transition-colors duration-150;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Shadow utilities */
+  .shadow-yelp {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .shadow-yelp-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  .shadow-yelp-lg {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid var(--surface);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
