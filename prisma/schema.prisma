@@ -48,12 +48,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -88,8 +88,8 @@ model Product {
   brand       String
   category    String   // "tops", "bottoms", "dresses", "outerwear", "shoes", "accessories"
   priceRange  String   // "$", "$$", "$$$", "$$$$"
-  description String?  @db.Text
-  images      String[] // Array of image URLs
+  description String?
+  images      String   @default("[]") // JSON array of image URLs
 
   // Aggregated stats
   avgRating       Float    @default(0)
@@ -124,7 +124,7 @@ model Review {
 
   // Written content
   title         String?
-  content       String   @db.Text
+  content       String
 
   // Fit information
   sizePurchased String   // "XS", "S", "M", "L", "XL", "XXL", etc.
@@ -137,7 +137,7 @@ model Review {
   bodyType      String?
 
   // Photos
-  photos        String[] // Array of image URLs
+  photos        String   @default("[]") // JSON array of image URLs
 
   // Stats
   helpfulCount  Int      @default(0)
