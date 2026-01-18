@@ -54,14 +54,22 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
+    console.error("Registration error:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid data", details: error.issues },
         { status: 400 }
       );
     }
+
+    // Return detailed error in development
+    const errorMessage = error instanceof Error ? error.message : "Something went wrong";
     return NextResponse.json(
-      { error: "Something went wrong" },
+      {
+        error: "Something went wrong",
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+      },
       { status: 500 }
     );
   }

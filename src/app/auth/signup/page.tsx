@@ -39,7 +39,10 @@ export default function SignUp() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Something went wrong");
+        const errorMsg = data.details
+          ? `${data.error}: ${data.details}`
+          : data.error || "Something went wrong";
+        setError(errorMsg);
         setLoading(false);
         return;
       }
