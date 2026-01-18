@@ -75,7 +75,7 @@ export default function Home() {
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-[#2b2b2b] text-base mb-1 line-clamp-1 group-hover:text-[#d32323] transition-colors">
+            <h3 className="font-bold text-[#2b2b2b] text-base mb-1 line-clamp-1 group-hover:text-[#98EBC5] transition-colors">
               {product.name}
             </h3>
             <p className="text-sm text-[#666666] mb-2">{product.brand}</p>
@@ -95,7 +95,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-[#d32323] via-[#af1c1c] to-[#8b1616] text-white relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#98EBC5] via-[#7DD4B0] to-[#8b1616] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
@@ -133,7 +133,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/auth/signup"
-                className="bg-white text-[#d32323] hover:bg-gray-50 font-bold py-3 px-8 rounded-md transition-all duration-200 shadow-lg hover:shadow-xl active:transform active:scale-95"
+                className="bg-white text-[#98EBC5] hover:bg-gray-50 font-bold py-3 px-8 rounded-md transition-all duration-200 shadow-lg hover:shadow-xl active:transform active:scale-95"
               >
                 Sign Up Free
               </Link>
@@ -151,7 +151,7 @@ export default function Home() {
                 <Link
                   key={category}
                   href={`/products?category=${category.toLowerCase()}`}
-                  className="px-6 py-2.5 bg-white border-2 border-[#e6e6e6] rounded-full text-sm font-semibold text-[#2b2b2b] hover:border-[#d32323] hover:text-[#d32323] transition-all duration-200 whitespace-nowrap"
+                  className="px-6 py-2.5 bg-white border-2 border-[#e6e6e6] rounded-full text-sm font-semibold text-[#2b2b2b] hover:border-[#98EBC5] hover:text-[#98EBC5] transition-all duration-200 whitespace-nowrap"
                 >
                   {category}
                 </Link>
@@ -257,9 +257,9 @@ export default function Home() {
         {/* Features Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
           <div className="card p-8 text-center hover:shadow-yelp-md transition-shadow">
-            <div className="w-16 h-16 bg-[#d32323]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-[#98EBC5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
-                className="w-8 h-8 text-[#d32323]"
+                className="w-8 h-8 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

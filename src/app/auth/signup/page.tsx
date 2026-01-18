@@ -71,7 +71,7 @@ export default function SignUp() {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full animate-fade-in">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-[#d32323] hover:opacity-80 transition-opacity mb-6">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#98EBC5] hover:opacity-80 transition-opacity mb-6">
             <svg className="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-10h2v4h-2v-4zm0 6h2v2h-2v-2z" />
             </svg>

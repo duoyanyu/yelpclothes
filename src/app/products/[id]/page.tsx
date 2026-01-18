@@ -81,7 +81,7 @@ const RatingBar = ({ label, rating, icon }: { label: string; rating: number; ico
     <span className="w-24 text-sm font-medium text-[#666666]">{label}</span>
     <div className="flex-1 bg-[#e6e6e6] rounded-full h-2.5">
       <div
-        className="bg-[#d32323] h-2.5 rounded-full transition-all duration-500"
+        className="bg-[#98EBC5] h-2.5 rounded-full transition-all duration-500"
         style={{ width: `${(rating / 5) * 100}%` }}
       />
     </div>
@@ -148,9 +148,9 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center">
         <div className="card p-12 text-center animate-scale-in">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#fef3f2] mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#E8F9F3] mb-6">
             <svg
-              className="w-10 h-10 text-[#d32323]"
+              className="w-10 h-10 text-[#98EBC5]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -199,11 +199,11 @@ export default function ProductDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm animate-fade-in">
-          <Link href="/" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Home
           </Link>
           <span className="text-[#cccccc]">/</span>
-          <Link href="/products" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/products" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Products
           </Link>
           <span className="text-[#cccccc]">/</span>
@@ -250,7 +250,7 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedImage(idx)}
                       className={`relative w-20 h-20 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${
                         selectedImage === idx
-                          ? "border-[#d32323]"
+                          ? "border-[#98EBC5]"
                           : "border-[#e6e6e6] hover:border-[#cccccc]"
                       }`}
                     >
@@ -284,7 +284,7 @@ export default function ProductDetailPage() {
                     ({product.totalReviews} {product.totalReviews === 1 ? 'review' : 'reviews'})
                   </span>
                 </div>
-                <span className="inline-block bg-[#fef3f2] text-[#d32323] px-4 py-1.5 rounded-full text-lg font-bold">
+                <span className="inline-block bg-[#E8F9F3] text-[#98EBC5] px-4 py-1.5 rounded-full text-lg font-bold">
                   {product.priceRange}
                 </span>
               </div>
@@ -338,7 +338,7 @@ export default function ProductDetailPage() {
           <div className="card p-8 mb-8 animate-fade-in">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -359,9 +359,9 @@ export default function ProductDetailPage() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-[#e6e6e6] rounded-lg p-5 hover:border-[#d32323] hover:shadow-lg transition-all group"
+                  className="border-2 border-[#e6e6e6] rounded-lg p-5 hover:border-[#98EBC5] hover:shadow-lg transition-all group"
                 >
-                  <div className="font-bold text-lg text-[#2b2b2b] mb-2 group-hover:text-[#d32323] transition-colors">
+                  <div className="font-bold text-lg text-[#2b2b2b] mb-2 group-hover:text-[#98EBC5] transition-colors">
                     {link.retailerName}
                   </div>
                   {link.price && (
@@ -369,7 +369,7 @@ export default function ProductDetailPage() {
                       ${link.price.toFixed(2)}
                     </div>
                   )}
-                  <div className="flex items-center gap-2 text-[#d32323] font-semibold">
+                  <div className="flex items-center gap-2 text-[#98EBC5] font-semibold">
                     <span>Shop Now</span>
                     <svg
                       className="w-4 h-4 group-hover:translate-x-1 transition-transform"
@@ -396,7 +396,7 @@ export default function ProductDetailPage() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -445,7 +445,7 @@ export default function ProductDetailPage() {
               {(filter.size || filter.bodyType) && (
                 <button
                   onClick={() => setFilter({ size: "", bodyType: "" })}
-                  className="px-4 py-2 text-[#d32323] hover:bg-[#fef3f2] rounded-md font-semibold transition-colors"
+                  className="px-4 py-2 text-[#98EBC5] hover:bg-[#E8F9F3] rounded-md font-semibold transition-colors"
                 >
                   Clear filters
                 </button>
@@ -497,7 +497,7 @@ export default function ProductDetailPage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-[#d32323] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div className="w-12 h-12 bg-[#98EBC5] rounded-full flex items-center justify-center text-white font-bold text-lg">
                           {review.user.name?.charAt(0).toUpperCase() || "U"}
                         </div>
                         <div>
@@ -519,8 +519,8 @@ export default function ProductDetailPage() {
                         onClick={() => handleUpvote(review.id)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-md font-semibold transition-all ${
                           hasUpvoted
-                            ? "bg-[#fef3f2] text-[#d32323] border-2 border-[#d32323]"
-                            : "border-2 border-[#e6e6e6] text-[#666666] hover:border-[#d32323] hover:text-[#d32323]"
+                            ? "bg-[#E8F9F3] text-[#98EBC5] border-2 border-[#98EBC5]"
+                            : "border-2 border-[#e6e6e6] text-[#666666] hover:border-[#98EBC5] hover:text-[#98EBC5]"
                         }`}
                       >
                         <svg
@@ -554,7 +554,7 @@ export default function ProductDetailPage() {
                         {review.photos.map((photo, idx) => (
                           <div
                             key={idx}
-                            className="relative w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border-2 border-[#e6e6e6] hover:border-[#d32323] transition-colors cursor-pointer"
+                            className="relative w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border-2 border-[#e6e6e6] hover:border-[#98EBC5] transition-colors cursor-pointer"
                           >
                             <Image
                               src={photo}

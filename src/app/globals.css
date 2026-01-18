@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Yelp-inspired Design System */
+/* Mint Green Design System */
 :root {
-  --primary: #d32323;
-  --primary-dark: #af1c1c;
-  --primary-light: #ff2d2d;
+  --primary: #98EBC5;
+  --primary-dark: #7DD4B0;
+  --primary-light: #B3F0D6;
   --secondary: #0073bb;
   --background: #ffffff;
   --surface: #f5f5f5;
@@ -61,15 +61,15 @@ html {
 @layer components {
   /* Button styles */
   .btn-primary {
-    @apply bg-[#d32323] hover:bg-[#af1c1c] text-white font-bold py-2.5 px-6 rounded-md transition-all duration-200 shadow-sm hover:shadow-md active:transform active:scale-95;
+    @apply bg-[#98EBC5] hover:bg-[#7DD4B0] text-white font-bold py-2.5 px-6 rounded-md transition-all duration-200 shadow-sm hover:shadow-md active:transform active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-[#2b2b2b] font-bold py-2.5 px-6 rounded-md border-2 border-[#e6e6e6] transition-all duration-200 hover:border-[#d32323] hover:text-[#d32323] active:transform active:scale-95;
+    @apply bg-white hover:bg-gray-50 text-[#2b2b2b] font-bold py-2.5 px-6 rounded-md border-2 border-[#e6e6e6] transition-all duration-200 hover:border-[#98EBC5] hover:text-[#98EBC5] active:transform active:scale-95;
   }
 
   .btn-ghost {
-    @apply bg-transparent hover:bg-gray-100 text-[#666666] hover:text-[#d32323] font-semibold py-2 px-4 rounded-md transition-all duration-200;
+    @apply bg-transparent hover:bg-gray-100 text-[#666666] hover:text-[#98EBC5] font-semibold py-2 px-4 rounded-md transition-all duration-200;
   }
 
   /* Card styles */
@@ -78,7 +78,7 @@ html {
   }
 
   .card-hover {
-    @apply card hover:border-[#d32323] hover:-translate-y-1 cursor-pointer;
+    @apply card hover:border-[#98EBC5] hover:-translate-y-1 cursor-pointer;
   }
 
   /* Input styles */
@@ -105,7 +105,7 @@ html {
   }
 
   .badge-primary {
-    @apply badge bg-[#d32323] text-white;
+    @apply badge bg-[#98EBC5] text-white;
   }
 
   .badge-success {

@@ -73,9 +73,9 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center">
         <div className="card p-12 text-center animate-scale-in">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#fef3f2] mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#E8F9F3] mb-6">
             <svg
-              className="w-10 h-10 text-[#d32323]"
+              className="w-10 h-10 text-[#98EBC5]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ export default function ProfilePage() {
         {/* Profile Header */}
         <div className="card p-8 mb-8 animate-scale-in">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="w-32 h-32 bg-[#d32323] rounded-full flex items-center justify-center text-white text-5xl font-bold flex-shrink-0">
+            <div className="w-32 h-32 bg-[#98EBC5] rounded-full flex items-center justify-center text-white text-5xl font-bold flex-shrink-0">
               {user.name?.charAt(0).toUpperCase() || "U"}
             </div>
             <div className="flex-1">
@@ -116,7 +116,7 @@ export default function ProfilePage() {
                 <div className="bg-[#f9f9f9] rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-1">
                     <svg
-                      className="w-5 h-5 text-[#d32323]"
+                      className="w-5 h-5 text-[#98EBC5]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -211,7 +211,7 @@ export default function ProfilePage() {
             <div className="mt-8 pt-8 border-t border-[#e6e6e6]">
               <div className="flex items-center gap-2 mb-4">
                 <svg
-                  className="w-5 h-5 text-[#d32323]"
+                  className="w-5 h-5 text-[#98EBC5]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -253,7 +253,7 @@ export default function ProfilePage() {
         <div className="card p-8 animate-fade-in">
           <div className="flex items-center gap-2 mb-6">
             <svg
-              className="w-6 h-6 text-[#d32323]"
+              className="w-6 h-6 text-[#98EBC5]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -300,7 +300,7 @@ export default function ProfilePage() {
                 <Link
                   key={review.id}
                   href={`/products/${review.product.id}`}
-                  className="flex items-start gap-4 p-4 rounded-lg border-2 border-[#e6e6e6] hover:border-[#d32323] hover:shadow-md transition-all animate-fade-in"
+                  className="flex items-start gap-4 p-4 rounded-lg border-2 border-[#e6e6e6] hover:border-[#98EBC5] hover:shadow-md transition-all animate-fade-in"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <div className="relative w-24 h-24 flex-shrink-0 bg-[#f5f5f5] rounded-lg overflow-hidden">
@@ -335,7 +335,7 @@ export default function ProfilePage() {
                         {review.product.brand}
                       </span>
                     </div>
-                    <h3 className="font-bold text-lg text-[#2b2b2b] mb-2 hover:text-[#d32323] transition-colors">
+                    <h3 className="font-bold text-lg text-[#2b2b2b] mb-2 hover:text-[#98EBC5] transition-colors">
                       {review.product.name}
                     </h3>
                     <div className="flex items-center gap-3 mb-3">

@@ -154,7 +154,7 @@ export default function WriteReviewPage() {
   const charCount = formData.content.length;
   const charCountColor =
     charCount < 50
-      ? "text-[#d32323]"
+      ? "text-[#98EBC5]"
       : charCount < 100
       ? "text-[#ffa500]"
       : "text-[#00a562]";
@@ -164,11 +164,11 @@ export default function WriteReviewPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm animate-fade-in">
-          <Link href="/" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Home
           </Link>
           <span className="text-[#cccccc]">/</span>
-          <Link href="/products" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/products" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Products
           </Link>
           {product && (
@@ -176,7 +176,7 @@ export default function WriteReviewPage() {
               <span className="text-[#cccccc]">/</span>
               <Link
                 href={`/products/${params.id}`}
-                className="text-[#666666] hover:text-[#d32323] transition-colors"
+                className="text-[#666666] hover:text-[#98EBC5] transition-colors"
               >
                 {product.name}
               </Link>
@@ -190,7 +190,7 @@ export default function WriteReviewPage() {
         <div className="mb-8 animate-scale-in">
           <div className="flex items-center gap-2 mb-2">
             <svg
-              className="w-8 h-8 text-[#d32323]"
+              className="w-8 h-8 text-[#98EBC5]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -288,7 +288,7 @@ export default function WriteReviewPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -309,7 +309,7 @@ export default function WriteReviewPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                  Size You Purchased <span className="text-[#d32323]">*</span>
+                  Size You Purchased <span className="text-[#98EBC5]">*</span>
                 </label>
                 <select
                   required
@@ -331,7 +331,7 @@ export default function WriteReviewPage() {
 
               <div>
                 <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                  Your Usual Size <span className="text-[#d32323]">*</span>
+                  Your Usual Size <span className="text-[#98EBC5]">*</span>
                 </label>
                 <select
                   required
@@ -354,7 +354,7 @@ export default function WriteReviewPage() {
 
             <div className="mt-6">
               <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                How Does It Fit? <span className="text-[#d32323]">*</span>
+                How Does It Fit? <span className="text-[#98EBC5]">*</span>
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
@@ -390,7 +390,7 @@ export default function WriteReviewPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -424,7 +424,7 @@ export default function WriteReviewPage() {
 
             <div>
               <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                Detailed Review <span className="text-[#d32323]">*</span>
+                Detailed Review <span className="text-[#98EBC5]">*</span>
               </label>
               <textarea
                 required
@@ -449,7 +449,7 @@ export default function WriteReviewPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

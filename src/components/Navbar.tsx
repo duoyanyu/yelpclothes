@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#d32323] border-b border-[#af1c1c] sticky top-0 z-50 shadow-md">
+    <nav className="bg-[#98EBC5] border-b border-[#7DD4B0] sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -125,7 +125,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="bg-white text-[#d32323] hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="bg-white text-[#98EBC5] hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   Sign Up
                 </Link>

@@ -85,11 +85,11 @@ export default function AddProductPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm animate-fade-in">
-          <Link href="/" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Home
           </Link>
           <span className="text-[#cccccc]">/</span>
-          <Link href="/products" className="text-[#666666] hover:text-[#d32323] transition-colors">
+          <Link href="/products" className="text-[#666666] hover:text-[#98EBC5] transition-colors">
             Products
           </Link>
           <span className="text-[#cccccc]">/</span>
@@ -100,7 +100,7 @@ export default function AddProductPage() {
         <div className="mb-8 animate-scale-in">
           <div className="flex items-center gap-2 mb-2">
             <svg
-              className="w-8 h-8 text-[#d32323]"
+              className="w-8 h-8 text-[#98EBC5]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -143,7 +143,7 @@ export default function AddProductPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -161,7 +161,7 @@ export default function AddProductPage() {
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                  Product Name <span className="text-[#d32323]">*</span>
+                  Product Name <span className="text-[#98EBC5]">*</span>
                 </label>
                 <input
                   type="text"
@@ -178,7 +178,7 @@ export default function AddProductPage() {
 
               <div>
                 <label className="block text-sm font-bold text-[#2b2b2b] mb-2">
-                  Brand <span className="text-[#d32323]">*</span>
+                  Brand <span className="text-[#98EBC5]">*</span>
                 </label>
                 <input
                   type="text"
@@ -209,7 +209,7 @@ export default function AddProductPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -222,7 +222,7 @@ export default function AddProductPage() {
                 />
               </svg>
               <h2 className="text-2xl font-bold text-[#2b2b2b]">Category</h2>
-              <span className="text-[#d32323] text-lg">*</span>
+              <span className="text-[#98EBC5] text-lg">*</span>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -233,7 +233,7 @@ export default function AddProductPage() {
                   onClick={() => setFormData({ ...formData, category: cat.value })}
                   className={`p-4 rounded-lg border-2 transition-all text-center ${
                     formData.category === cat.value
-                      ? "border-[#d32323] bg-[#fef3f2]"
+                      ? "border-[#98EBC5] bg-[#E8F9F3]"
                       : "border-[#e6e6e6] hover:border-[#cccccc]"
                   }`}
                 >
@@ -248,7 +248,7 @@ export default function AddProductPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -261,7 +261,7 @@ export default function AddProductPage() {
                 />
               </svg>
               <h2 className="text-2xl font-bold text-[#2b2b2b]">Price Range</h2>
-              <span className="text-[#d32323] text-lg">*</span>
+              <span className="text-[#98EBC5] text-lg">*</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -292,7 +292,7 @@ export default function AddProductPage() {
           <div className="card p-8">
             <div className="flex items-center gap-2 mb-6">
               <svg
-                className="w-6 h-6 text-[#d32323]"
+                className="w-6 h-6 text-[#98EBC5]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
